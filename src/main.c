@@ -40,16 +40,16 @@ void sortCD(ClassifiedDistance* data, int size){
 }
 
 
-ClassifiedDistance* classify(int dimensions, const ClassifiedPoint** trainedData, int trainedSize, float* toClassify){
+ClassifiedDistance* classify(int dimensions, const ClassifiedPoint* trainedData, int trainedSize, float* toClassify){
 
 
   ClassifiedDistance * distances = malloc(sizeof(ClassifiedDistance) * trainedSize);
   for (int i = 0; i < trainedSize; i++)
   {
     ClassifiedDistance distance;
-    distance.classification = (*trainedData)[i].classification;
+    distance.classification = (trainedData)[i].classification;
 
-    distance.distance = eukl_distance(dimensions, (*trainedData)[i].point, toClassify);
+    distance.distance = eukl_distance(dimensions, (trainedData)[i].point, toClassify);
     distances[i] = distance;
   }
   
@@ -122,7 +122,7 @@ int main(int argc, char const *argv[])
   //Read the Trained Data from CSV- File and Store it into TrainData Array
   readTrainingData("iris.csv", trainDataSize, trainData);
   //Classify the Point you want to know of
-  ClassifiedDistance * distances = classify(4, &trainData, trainDataSize, toClassify);
+  ClassifiedDistance * distances = classify(4, trainData, trainDataSize, toClassify);
 
   //Print the smallest K Results and Display them.
   for (size_t i = 0; i < K; i++)
