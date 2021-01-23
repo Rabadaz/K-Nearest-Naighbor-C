@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
-#define CLASSIFICATION_COUNT 3
+
 
 typedef struct{
   float * point;
@@ -102,43 +103,31 @@ void readTrainingData(char* filename, int numOfLines, ClassifiedPoint* ret){
 
 int main(int argc, char const *argv[])
 {
-
+  //Size of the Dataset to Train
   int trainDataSize = 140;
-  
-  float toClassify[4] = {5.7f,3.0f,5.2f,1.6f}; 
-  
-  ClassifiedPoint *  trainData = malloc(sizeof(ClassifiedPoint) * trainDataSize);
-  
-  readTrainingData("iris.csv", trainDataSize, trainData);
-
-  ClassifiedDistance * distances = classify(4, &trainData, trainDataSize, toClassify);
-
-
+  //Definition of the Meaning of Classes
   char* colors[] = {
-    "Iris-setosa",
-    "Iris-versicolor",
-    "Iris-virginica"
+    /*CLASS 0:*/ "Iris-setosa",
+    /*CLASS 1:*/ "Iris-versicolor",
+    /*CLASS 2:*/ "Iris-virginica"
   };
 
-
-
-  for (size_t i = 0; i < 3; i++)
-  {
-        printf("Result: %f %s\n",distances[i].distance, colors[distances[i].classification]);
-  }
+  //Point that should be Classified
+  float toClassify[4] = {5.7f,3.0f,5.2f,1.6f};
+  //The K of KNN
+  int K = 3;
   
+  //Allocate Array to Store trained Data
+  ClassifiedPoint *  trainData = malloc(sizeof(ClassifiedPoint) * trainDataSize);
+  //Read the Trained Data from CSV- File and Store it into TrainData Array
+  readTrainingData("iris.csv", trainDataSize, trainData);
+  //Classify the Point you want to know of
+  ClassifiedDistance * distances = classify(4, &trainData, trainDataSize, toClassify);
 
-
-
-  return 0;
+  //Print the smallest K Results and Display them.
+  for (size_t i = 0; i < K; i++)
+  {
+    printf("Result: %f %s\n",distances[i].distance, colors[distances[i].classification]);
+  }
+  return errno;
 }
-
-
-
-
-
-
-
-
-
-
