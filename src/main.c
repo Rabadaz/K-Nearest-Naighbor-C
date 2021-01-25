@@ -138,7 +138,7 @@ void readTrainingData(char* filename, int numOfLines, ClassifiedPoint* ret){
     i++;
   }
   fclose(fileptr);
-  free(buffer);
+ 
 }
 
 

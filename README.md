@@ -1,11 +1,9 @@
-# K-Nearest-Naighbour C Implementation
+# K-Nearest-Naighbor C Implementation
 
 This Project Implements the KNN Algorithm in C
 
 ## The KNN Algorithm
   Simple Lazy-Learing Algorithm to get going with Machine Learning
-
-
 ### How does it work
   1. Claculate all the Euclidean Distances to the Trained Points
   2. Sort them by the Distance Asccending
