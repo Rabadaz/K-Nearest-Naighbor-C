@@ -148,7 +148,7 @@ void readTrainingData(char* filename, int numOfLines, ClassifiedPoint* ret){
 int main(int argc, char const *argv[])
 {
   //Size of the Dataset to Train
-  int trainDataSize = 140;
+  int trainDataSize = 149;
   //Definition of the Meaning of Classes
   char* classes[] = {
     /*CLASS 0:*/ "Iris-setosa",
