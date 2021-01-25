@@ -56,7 +56,7 @@ void sortCD(ClassifiedDistance* data, int size){
 }
 
 /**
- * Classification function K-Nearest-Naighbour
+ * Classification function K-Nearest-Neighbour
  * 
  * Input Parameters:
  *  dimensions: count of Dimensions the Knn works with

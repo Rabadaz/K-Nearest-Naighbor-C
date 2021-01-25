@@ -1,4 +1,4 @@
-# K-Nearest-Naighbor C Implementation
+# K-Nearest-Neighbor C Implementation
 
 This Project Implements the KNN Algorithm in C
 
